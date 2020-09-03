@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <span id="span">我是内容:</span>
+  <input type="text" id="input">
+  <script>
+    let obj = {}
+    
+    obj = new Proxy(obj, {
+      get(target,prop){
+        console.log(target[prop])
+        return target[prop]
+      },
+      set(target,prop,value){
+        target[prop] = value
+        observe()
+      }
+    })
+
+    function observe(){
+      input.value = obj.name
+      span.innerHTML = obj.name
+    }
+
+
+    input.oninput = function(){
+      obj.name = this.value
+    }
+  </script>
+</body>
+</html>
