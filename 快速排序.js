@@ -1,3 +1,4 @@
+/*快速排序*/
 let a = [3, 1, 10, 7, 2, 6, 5, 8];
 
 function quickSort (arr) {
