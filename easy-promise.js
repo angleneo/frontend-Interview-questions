@@ -22,11 +22,16 @@ class Promise2 {
   }
 
   then(succeed, fail) {
-    this.succeed = succeed
+     this.succeed = succeed
     this.fail = fail
   }
 }
-
+/*
+all -- 其中一个失败就会中止 返回reject的
+allsettled -- 返回每个输出 无论成功失败
+any -- 其中一个成功就会中止 返回成功的
+race -- 谁更快就返回谁
+*/
 Promise2.all = function(arrP) {
   let list = []
   let len = 0
@@ -85,10 +90,10 @@ const getPList = () => {
   return arrP
 }
 
-Promise2.all(getPList()).then(
-  data => console.log('promise.all 测试:', data),
-  err => console.error('promise.all 测试:'+ err)
-)
+// Promise2.all(getPList()).then(
+//   data => console.log('promise.all 测试:', data),
+//   err => console.error('promise.all 测试:'+ err)
+// )
 
 
 Promise2.race(getPList()).then(
